@@ -44,7 +44,7 @@ function pwa_admin_url_redirect_conditions()
     $request_url = pwa_get_current_page_url($_SERVER);
     $newUrl = explode('?',$request_url);
 
-	if((!is_admin() || ! is_user_logged_in()) && $wordpresActualURL==$newUrl[0] ) 
+	if(! is_user_logged_in() && $wordpresActualURL==$newUrl[0] ) 
 	{
 		//echo "{False}";
 		wp_redirect(home_url('/'));
