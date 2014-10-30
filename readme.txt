@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Protect WP-Admin,wp-admin,Protect wordpress admin,Secure Admin, Wordpress Admin
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 1.0
+Stable tag: 1.1
 
 Protect Your WordPress Site Admin Against Hackers 
 
@@ -35,6 +35,12 @@ Don't worry, Just update the site permalink ("Settings" >> "Permalinks") and re-
 
 
 == Changelog == 
+
+= 1.1 = 
+ * Add new option for restrict registered users from wp-admin
+ * Add logout options after add/update admin new url
+ * Fixed permalink update issue after add/update admin new url. Now no need to update your permalink
+ * Add option for redirect user to new admin url after update the new admin url
 
 = 1.0 = 
  * First stable release

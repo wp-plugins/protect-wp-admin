@@ -5,7 +5,7 @@ Plugin URI: http://www.mrwebsolution.in/
 Description: "protect-wp-admin" is a very help full plugin to make wordpress admin more secure. Protect WP-Admin plugin is provide the options for change the wp-admin url and make the login page private(directly user can't access the login page).
 Author: Raghunath
 Author URI: http://www.mrwebsolution.in/
-Version: 1.0
+Version: 1.1
 */
 
 /***  Copyright 2014  Raghunath  (email : raghunath.0087@gmail.com)
@@ -43,7 +43,9 @@ add_action('admin_init','init_pwa_options_fields');
 /** Register "Protect WP-Admin" options */
 function init_pwa_options_fields(){
 	register_setting('pwa_setting_options','pwa_active');
-	register_setting('pwa_setting_options','pwa_rewrite_text');
+	register_setting('pwa_setting_options','pwa_rewrite_text');	
+	register_setting('pwa_setting_options','pwa_restrict');	
+	register_setting('pwa_setting_options','pwa_logout');
 } 
 
 
@@ -61,15 +63,24 @@ function init_pwa_admin_option_page(){ ?>
   <!-- Start Options Form -->
 	<form action="options.php" method="post" id="pwa-settings-form-admin">
 		
-	<div id="pwa-tab-menu"><a id="pwa-general" class="pwa-tab-links active" >General</a> <a  id="pwa-support" class="pwa-tab-links">Support</a> </div>
+	<div id="pwa-tab-menu"><a id="pwa-general" class="pwa-tab-links active" >General</a> <a  id="pwa-advance" class="pwa-tab-links">Advance Settings</a> <a  id="pwa-support" class="pwa-tab-links">Support</a> </div>
 
 	<div class="pwa-setting">
 	<!-- General Setting -->	
 	<div class="first pwa-tab" id="div-pwa-general">
 	<h2>General Settings</h2>
-	<p><strong>Note!:</strong> After update the new admin url,you have need to update the site permalink!</p>
+	<p><strong>Note!:</strong> After update the new admin url,if nothing happen then you can re-check it after update the site permalink!</p>
 	<p><label>Enable:</label><input type="checkbox" id="pwa_active" name="pwa_active" value='1' <?php if(get_option('pwa_active')!=''){ echo ' checked="checked"'; }?>/></p>
-	<p><label>New Admin URL:</label><input type="text" id="pwa_rewrite_text" name="pwa_rewrite_text" value="<?php echo esc_attr(get_option('pwa_rewrite_text')); ?>"  placeholder="wp-admin"></p>
+	<p><label>Add New Admin URL:</label><input type="text" id="pwa_rewrite_text" name="pwa_rewrite_text" value="<?php echo esc_attr(get_option('pwa_rewrite_text')); ?>"  placeholder="wp-admin"></p>
+	</div>
+	
+	<!-- Advance Setting -->	
+	<div class="pwa-tab" id="div-pwa-advance">
+	<h2>Advance Settings</h2>
+
+	<p><label>Restrict registered users from wp-admin :</label><input type="checkbox" id="pwa_restrict" name="pwa_restrict" value='1' <?php if(get_option('pwa_restrict')!=''){ echo ' checked="checked"'; }?>/></p>
+	<p><label>Logout Admin After Add/Update New Admin URL(Optional) :</label><input type="checkbox" id="pwa_logout" name="pwa_logout" value='1' <?php if(get_option('pwa_logout')==''){ echo ''; }else{echo 'checked="checked"';}?>/> (This is only for security purpose)</p>
+
 	</div>
 
 	<!-- Support -->
@@ -82,7 +93,7 @@ function init_pwa_admin_option_page(){ ?>
 	<p><a href="mailto:raghunath.0087@gmail.com" target="_blank" class="contact-author">Contact Author</a></p>
 	<p><strong>My Other Plugins:</strong><br>
 	<ul>
-		<li><a href="https://wordpress.org/plugins/custom-share-buttons-with-floating-sidebar" target="_blank">Simple Testimonial Rutator</a></li>
+		<li><a href="https://wordpress.org/plugins/custom-share-buttons-with-floating-sidebar" target="_blank">Custom Share Buttons with Floating Sidebar</a></li>
 		<li><a href="https://wordpress.org/plugins/simple-testimonial-rutator/" target="_blank">Simple Testimonial Rutator</a></li>
 		<li><a href="https://wordpress.org/plugins/wp-easy-recipe/" target="_blank">WP Easy Recipe</a></li>
 		<li><a href="https://wordpress.org/plugins/wp-social-buttons/" target="_blank">WP Social Buttons</a></li>
@@ -145,7 +156,9 @@ if( function_exists('register_uninstall_hook') ){
 //Delete all options after uninstall the plugin
 function init_uninstall_pwa_plugins(){
 	delete_option('pwa_active');
-	delete_option('pwa_rewrite_text');
+	delete_option('pwa_rewrite_text');	
+	delete_option('pwa_restrict');	
+	delete_option('pwa_logout');
 }
 require dirname(__FILE__).'/pwa-class.php';
 
