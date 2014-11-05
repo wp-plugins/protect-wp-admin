@@ -6,7 +6,7 @@ Requires at least: 3.0
 Tested up to: 4.0
 Stable tag: 1.1
 
-Protect Wordpress Admin Against Hackers By Change Default Admin URL To New Admin URL (i.e http://yourdomain.com/myadmin)
+Protect Wordpress Admin Against Hackers By Change Default Admin URL To Secure Admin URL (i.e http://yourdomain.com/myadmin)
 
 == Description ==
 
@@ -21,17 +21,17 @@ If you run a WordPress website, you should absolutely use "protect-wp-admin" to 
 
 == Installation ==
 
-Step 1. Upload "protect-wp-admin" folder to the `/wp-content/plugins/` directory
+ * Step 1. Upload "protect-wp-admin" folder to the `/wp-content/plugins/` directory
 
-Step 2. Activate the plugin through the Plugins menu in WordPress
+ * Step 2. Activate the plugin through the Plugins menu in WordPress
 
-Step 3. Go to Settings "Protect WP-Admin" and configure the plugin settings.
+ * Step 3. Go to Settings "Protect WP-Admin" and configure the plugin settings.
 
 == Frequently Asked Questions ==
 
-1.Nothing happen after enable and add the new wordpress admin url? 
+ * 1.Nothing happen after enable and add the new wordpress admin url? 
 
-Don't worry, Just update the site permalink ("Settings" >> "Permalinks") and re-check,Now this time it will be work fine
+ Don't worry, Just update the site permalink ("Settings" >> "Permalinks") and re-check,Now this time it will be work fine
 == Screenshots ==
 
 1. screenshot-1.png
