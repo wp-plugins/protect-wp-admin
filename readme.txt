@@ -6,11 +6,11 @@ Requires at least: 3.0
 Tested up to: 4.0
 Stable tag: 1.1
 
-Protect Wordpress Admin Against Hackers By Change Default Admin URL To Secure Admin URL (i.e http://yourdomain.com/myadmin)
+Protect Webiste Admin Against Hackers By Change Default Admin URL To Secure Admin URL (i.e http://yourdomain.com/myadmin)
 
 == Description ==
 
-If you run a WordPress website, you should absolutely use "protect-wp-admin" to secure it against hackers. "protect-wp-admin" will be help you to make wordpress admin more secure. Protect WP-Admin plugin is provide the option for change the wp-admin url to new ur(i.e http://yourdomain.com/myadmin).This plugin is provide an option to restrict the wp-admin OR wp-login.php page from Guest user.
+If you run a WordPress website, you should absolutely use "protect-wp-admin" to secure it against hackers. "protect-wp-admin" will be help you to make your site admin more secure. Protect WP-Admin plugin is provide the option for change the wp-admin url to new secure url (i.e http://yourdomain.com/myadmin).This plugin is provide an option to restrict the wp-admin OR wp-login.php page from Guest user.
 
 = Features =
 
@@ -22,9 +22,7 @@ If you run a WordPress website, you should absolutely use "protect-wp-admin" to 
 == Installation ==
 
  * Step 1. Upload "protect-wp-admin" folder to the `/wp-content/plugins/` directory
-
  * Step 2. Activate the plugin through the Plugins menu in WordPress
-
  * Step 3. Go to Settings "Protect WP-Admin" and configure the plugin settings.
 
 == Frequently Asked Questions ==
