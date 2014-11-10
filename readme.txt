@@ -6,7 +6,7 @@ Requires at least: 3.0
 Tested up to: 4.0
 Stable tag: 1.1
 
-Protect Webiste Admin Against Hackers By Change Default Admin URL To Secure Admin URL (i.e http://yourdomain.com/myadmin)
+Protect Your Website Admin Against Hackers By Change Default Admin URL To Secure Admin URL (i.e http://yourdomain.com/myadmin)
 
 == Description ==
 
