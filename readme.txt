@@ -35,17 +35,19 @@ If you run a WordPress website, you should absolutely use "protect-wp-admin" to 
 
 Basicaly issues can come only in case when you will use default permalink settings. 
 If your permalink will be update to any other option except default then it will be work fine. Anyway Dont' worry,add code give below into your site .htaccess file.
-	# BEGIN WordPress
-	<IfModule mod_rewrite.c>
-	RewriteEngine On
-	RewriteBase /
-	RewriteRule ^index\.php$ - [L]
-	RewriteRule ^newadmin/?$ /wp-login.php [QSA,L]
-	RewriteCond %{REQUEST_FILENAME} !-f
-	RewriteCond %{REQUEST_FILENAME} !-d
-	RewriteRule . /index.php [L]
-	</IfModule>
-	# END WordPress
+	
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteRule ^newadmin/?$ /wp-login.php [QSA,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+# END WordPress
+
 Don not forgot to update the "newadmin" slug with your new admin slug (that you were added during update the plugin settings) :-)
 
 == Screenshots ==
