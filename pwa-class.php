@@ -48,7 +48,6 @@ function pwa_logout_user_after_settings_save()
   if(isset($_GET['settings-updated']) && $_GET['settings-updated'] && isset($_GET['page']) && $_GET['page']=='pwa-settings' && isset($getPwaOptions['pwa_logout']) && $getPwaOptions['pwa_logout']==1)
    {
      $URL=str_replace('&amp;','&',wp_logout_url());
-      session_destroy();
       if(isset($getPwaOptions['pwa_rewrite_text']) && isset($getPwaOptions['pwa_logout']) && $getPwaOptions['pwa_logout']==1 && $getPwaOptions['pwa_rewrite_text']!=''){
       wp_redirect(home_url('/'.$getPwaOptions['pwa_rewrite_text']));
      }else
@@ -57,15 +56,6 @@ function pwa_logout_user_after_settings_save()
 		 }
      //wp_redirect($URL);
    }
-   
-  /* $request_url = pwa_get_current_page_url($_SERVER);
-   if(isset($getPwaOptions['pwa_rewrite_text']) && $getPwaOptions['pwa_logout']==1 && $request_url==home_url('/wp-login.php?loggedout=true'))
-   {
-	      echo "helloss";
-	    wp_redirect(home_url('/'.$getPwaOptions['pwa_rewrite_text']));
-	   
-	   }
-   */
    
 }
 
@@ -100,8 +90,26 @@ function pwa_admin_url_redirect_conditions()
 		{
 			global $current_user;
 	        $user_roles = $current_user->roles;
+	        $user_ID = $current_user->ID;
 	        $user_role = array_shift($user_roles);
-			if($user_role=='administrator')
+	        
+	        if(isset($getPwaOptions['pwa_allow_custom_users']) && $getPwaOptions['pwa_allow_custom_users']!='')
+	        {
+				$userids=explode(',' ,$getPwaOptions['pwa_allow_custom_users']);
+				
+				if(is_array($userids))
+				{
+					$userids=explode(',' ,$getPwaOptions['pwa_allow_custom_users']);
+					}else
+					{
+						$userids[]=$getPwaOptions['pwa_allow_custom_users'];
+						}
+				}else
+				{
+					$userids=array();
+					}
+	        
+			if($user_role=='administrator' || in_array($user_ID,$userids))
 			{
 				//silent is gold
 				}else
