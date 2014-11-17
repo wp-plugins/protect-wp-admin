@@ -27,12 +27,14 @@ If you run a WordPress website, you should absolutely use "protect-wp-admin" to 
 
 == Frequently Asked Questions ==
 
- * 1.Nothing happen after enable and add the new wordpress admin url? 
+* 1.Nothing happen after enable and add the new wordpress admin url? 
+
    Don't worry, Just update the site permalink ("Settings" >> "Permalinks") and re-check,Now this time it will be work fine
 
- * 2.Was not able to login after installation
-  Basicaly issues can come only in case when you will use default permalink settings. 
-  If your permalink will be update to any other option except default then it will be work fine. Anyway Dont' worry,add code give below into your site .htaccess file.
+* 2.Was not able to login after installation
+
+Basicaly issues can come only in case when you will use default permalink settings. 
+If your permalink will be update to any other option except default then it will be work fine. Anyway Dont' worry,add code give below into your site .htaccess file.
 	# BEGIN WordPress
 	<IfModule mod_rewrite.c>
 	RewriteEngine On
@@ -44,7 +46,6 @@ If you run a WordPress website, you should absolutely use "protect-wp-admin" to 
 	RewriteRule . /index.php [L]
 	</IfModule>
 	# END WordPress
-
 Don not forgot to update the "newadmin" slug with your new admin slug (that you were added during update the plugin settings) :-)
 
 == Screenshots ==
