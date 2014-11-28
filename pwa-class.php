@@ -24,7 +24,7 @@ $getPwaOptions=get_pwa_setting_options();
 
 if(isset($getPwaOptions['pwa_active']) && '1'==$getPwaOptions['pwa_active'])
 {
-add_action('init', 'pwa_flush_rewrite');
+
 add_action('init', 'init_pwa_admin_rewrite_rules' );
 add_action('init', 'pwa_admin_url_redirect_conditions' );
 
@@ -59,12 +59,6 @@ function pwa_logout_user_after_settings_save()
    
 }
 
-/** Flush rewrite rules after update the permalink */
-function pwa_flush_rewrite() {
-    global $wp_rewrite;
-    $wp_rewrite->flush_rules();
-    
-}	
 /** Create a new rewrite rule for change to wp-admin url */
 function init_pwa_admin_rewrite_rules() {
 	$getPwaOptions=get_pwa_setting_options();
