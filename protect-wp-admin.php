@@ -75,8 +75,6 @@ function get_pwa_setting_optionsa() {
 function init_pwa_admin_option_page(){ 
 	
 		$tt=get_pwa_setting_optionsa();
-	
-	echo "count".count($tt);
 	?>
 	<div style="width: 80%; padding: 10px; margin: 10px;"> 
 	
@@ -90,16 +88,15 @@ function init_pwa_admin_option_page(){
 		<!-- General Setting -->	
 	<div class="first pwa-tab" id="div-pwa-general">
 	<h2>General Settings</h2>
-	<p><strong>Note!:</strong> After update the new admin url,if nothing happen then you can re-check it after update the site permalink!</p>
-	<p><label>Enable:</label><input type="checkbox" id="pwa_active" name="pwa_active" value='1' <?php if(get_option('pwa_active')!=''){ echo ' checked="checked"'; }?>/></p>
-	<p><label>Add New Admin URL:</label><input type="text" id="pwa_rewrite_text" name="pwa_rewrite_text" value="<?php echo esc_attr(get_option('pwa_rewrite_text')); ?>"  placeholder="wp-admin"></p>
+	<p><label>Enable: </label><input type="checkbox" id="pwa_active" name="pwa_active" value='1' <?php if(get_option('pwa_active')!=''){ echo ' checked="checked"'; }?>/></p>
+	<p id="adminurl"><label>Admin Slug: </label><input type="text" id="pwa_rewrite_text" name="pwa_rewrite_text" value="<?php echo esc_attr(get_option('pwa_rewrite_text')); ?>"  placeholder="Add New Secure Admin URL Slug ( i.e /myadmin )" size="30"></p>
 	</div>
 	
 	<!-- Advance Setting -->	
 	<div class="pwa-tab" id="div-pwa-advance">
 	<h2>Advance Settings</h2>
 
-	<p><input type="checkbox" id="pwa_restrict" name="pwa_restrict" value='1' <?php if(get_option('pwa_restrict')!=''){ echo ' checked="checked"'; }?>/> <label>Restrict registered users from wp-admin :</label></p>
+	<p><input type="checkbox" id="pwa_restrict" name="pwa_restrict" value='1' <?php if(get_option('pwa_restrict')!=''){ echo ' checked="checked"'; }?>/> <label>Restrict registered non-admin users from wp-admin :</label></p>
 	<p><input type="checkbox" id="pwa_logout" name="pwa_logout" value='1' <?php if(get_option('pwa_logout')==''){ echo ''; }else{echo 'checked="checked"';}?>/> <label>Logout Admin After Add/Update New Admin URL(Optional) :</label> (This is only for security purpose)</p>
 	<p><label>Allow access to non-admin users:</label><input type="text" id="pwa_allow_custom_users" name="pwa_allow_custom_users" value="<?php echo esc_attr(get_option('pwa_allow_custom_users')); ?>"  placeholder="1,2,3"> (<i>Add comma seprated ids</i>)</p>
 
@@ -122,11 +119,11 @@ function init_pwa_admin_option_page(){
 		<li><a href="https://wordpress.org/plugins/wp-youtube-gallery/" target="_blank">WP Youtube Gallery</a></li>
 		</ul></p>
 	</div>
-<div style="color:red;"><strong>Important!:</strong> Please update permalinks before activate the plugin. Permalinks option should not be default.</div>	
 
 	</div>
 	<span class="submit-btn"><?php echo get_submit_button('Save Settings','button-primary','submit','','');?></span>
-		
+		<div style="color:red;"><strong>Important!:</strong> Please update permalinks before activate the plugin. Permalinks option should not be default.</div>	
+
     <?php settings_fields('pwa_setting_options'); ?>
 	
 	</form>
@@ -169,6 +166,21 @@ echo $script='<script type="text/javascript">
 					return true;
 					}
 			});
+		
+		 jQuery("#submit").click(function(){
+		 var $el = jQuery("#pwa_active");
+		 var $vlue = jQuery("#pwa_rewrite_text").val();
+	
+		 if(($el[0].checked) && $vlue=="")
+		 {
+			 	 jQuery("#pwa_rewrite_text").css("border","1px solid red");
+			 	 jQuery("#adminurl").append(" <strong style=\'color:red;\'>Please enter admin url slug</strong>");
+			 	 return false;
+			 }
+			 return true;
+		 
+			 })
+	
 		})
 	</script>';
 
