@@ -10,12 +10,16 @@ Protect Your Website Admin Against Hackers!. Change default Admin URL To Secure 
 
 == Description ==
 
-If you run a WordPress website, you should absolutely use "protect-wp-admin" to secure it against hackers. 
+If you run a WordPress website, you should absolutely use "protect-wp-admin" to secure it against hackers.
+
 Protect WP-Admin fixes a glaring security hole in the WordPress community: the well-known problem of the admin panel URL.
 Everyone knows where the admin panel, and this includes hackers as well.
+
 Protect WP-Admin helps solve this problem by allowing webmasters to customize their admin panel URL and blocking the default links.
+
 After you setup Protect WP-Admin, webmasters will be able to change the "sitename.com/wp-admin" link into something like "sitename.com/custom-string".
 All queries for the classic "/wp-admin/" and "wp-login.php" files will be redirected to the homepage, while access to the WP backend will be allowed only for the custom URL.
+
 The plugin also comes with some access filters, allowing webmasters to restrict guest and registered users access to wp-admin, just in case you want some of your editors to log in the classic way.
 
 = Features =
