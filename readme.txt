@@ -27,6 +27,7 @@ The plugin also comes with some access filters, allowing webmasters to restrict 
  * Rename/Change wp-admin url to new url (i.e http://yourdomain.com/myadmin)
  * Restrict guest users for access to wp-admin
  * Restrict registered non-admin users from wp-admin
+ * Change Logo and body background color on wp-login page
 
 
 == Installation ==
@@ -66,6 +67,11 @@ Don not forgot to update the "newadmin" slug with your new admin slug (that you 
 
 2. screenshot-2.png
 
+3. screenshot-3.png
+
+4. screenshot-4.png
+
+5. screenshot-5.png
 
 == Changelog == 
 
