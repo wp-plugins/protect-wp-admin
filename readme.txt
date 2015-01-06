@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Protect WP-Admin,wp-admin,Protect wordpress admin,Secure Admin,Admin,Scure Wordpress Admin,Rename Admin URL, Rename Wordpress Admin URL,Change wp-admin url,Change Admin URL,Change Admin Path,Restrict wp-admin
 Requires at least: 3.0
 Tested up to: 4.1
-Stable tag: 1.2
+Stable tag: 1.3
 
 Protect Your Website Admin Against Hackers!. Change default Admin URL To Secure Admin URL (i.e http://yourdomain.com/myadmin)
 
@@ -68,6 +68,11 @@ Don not forgot to update the "newadmin" slug with your new admin slug (that you 
 
 
 == Changelog == 
+
+= 1.3 = 
+ * Added an option for define to admin login page logo
+ * Added an option for define to wp-login page background-color
+ * Fixed some minor css issues
 
 = 1.2 = 
  * Added new option for allow admin access to non-admin users

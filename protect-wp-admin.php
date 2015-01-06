@@ -5,7 +5,7 @@ Plugin URI: http://www.mrwebsolution.in/
 Description: "protect-wp-admin" is a very help full plugin to make wordpress admin more secure. Protect WP-Admin plugin is provide the options for change the wp-admin url and make the login page private(directly user can't access the login page).
 Author: Raghunath
 Author URI: http://www.mrwebsolution.in/
-Version: 1.2
+Version: 1.3
 */
 
 /***  Copyright 2014  Raghunath  (email : raghunath.0087@gmail.com)
@@ -47,6 +47,8 @@ function init_pwa_options_fields(){
 	register_setting('pwa_setting_options','pwa_restrict');	
 	register_setting('pwa_setting_options','pwa_logout');
 	register_setting('pwa_setting_options','pwa_allow_custom_users');
+	register_setting('pwa_setting_options','pwa_logo_path');
+	register_setting('pwa_setting_options','pwa_login_page_bg_color');
 } 
 
 
@@ -82,7 +84,7 @@ function init_pwa_admin_option_page(){
   <!-- Start Options Form -->
 	<form action="options.php" method="post" id="pwa-settings-form-admin">
 	<input type="hidden"  id="check_permalink" value="<?php echo count($tt);?>">	
-	<div id="pwa-tab-menu"><a id="pwa-general" class="pwa-tab-links active" >General</a> <a  id="pwa-advance" class="pwa-tab-links">Advance Settings</a> <a  id="pwa-support" class="pwa-tab-links">Support</a> </div>
+	<div id="pwa-tab-menu"><a id="pwa-general" class="pwa-tab-links active" >General</a> <a  id="pwa-admin-style" class="pwa-tab-links">Admin Style</a> <a  id="pwa-advance" class="pwa-tab-links">Advance Settings</a> <a  id="pwa-support" class="pwa-tab-links">Support</a> </div>
 
 	<div class="pwa-setting">
 		<!-- General Setting -->	
@@ -92,6 +94,13 @@ function init_pwa_admin_option_page(){
 	<p id="adminurl"><label>Admin Slug: </label><input type="text" id="pwa_rewrite_text" name="pwa_rewrite_text" value="<?php echo esc_attr(get_option('pwa_rewrite_text')); ?>"  placeholder="Add New Secure Admin URL Slug ( i.e /myadmin )" size="30"></p>
 	</div>
 	
+	<!-- Admin Style -->
+	<div class="last author pwa-tab" id="div-pwa-admin-style">
+	<h2>Admin Style Settings</h2>
+	<p id="adminurl"><label>Define Logo Path: </label><input type="text" id="pwa_logo_path" name="pwa_logo_path" value="<?php echo esc_attr(get_option('pwa_logo_path')); ?>"  placeholder="Add Custom Logo Image Path" size="30">(<i>Change WordPress Default Login Logo </i>)</p>
+	<p id="adminurl"><label>Body Background Color: </label><input type="text" id="pwa_login_page_bg_color" name="pwa_login_page_bg_color" value="<?php echo esc_attr(get_option('pwa_login_page_bg_color')); ?>"  placeholder="#444444" size="30"></p>
+	</div>
+	
 	<!-- Advance Setting -->	
 	<div class="pwa-tab" id="div-pwa-advance">
 	<h2>Advance Settings</h2>
@@ -99,9 +108,10 @@ function init_pwa_admin_option_page(){
 	<p><input type="checkbox" id="pwa_restrict" name="pwa_restrict" value='1' <?php if(get_option('pwa_restrict')!=''){ echo ' checked="checked"'; }?>/> <label>Restrict registered non-admin users from wp-admin :</label></p>
 	<p><input type="checkbox" id="pwa_logout" name="pwa_logout" value='1' <?php if(get_option('pwa_logout')==''){ echo ''; }else{echo 'checked="checked"';}?>/> <label>Logout Admin After Add/Update New Admin URL(Optional) :</label> (This is only for security purpose)</p>
 	<p><label>Allow access to non-admin users:</label><input type="text" id="pwa_allow_custom_users" name="pwa_allow_custom_users" value="<?php echo esc_attr(get_option('pwa_allow_custom_users')); ?>"  placeholder="1,2,3"> (<i>Add comma seprated ids</i>)</p>
-
+	
 	</div>
 
+	
 	<!-- Support -->
 	<div class="last author pwa-tab" id="div-pwa-support">
 	<h2>Plugin Support</h2>
@@ -221,6 +231,8 @@ function init_uninstall_pwa_plugins(){
 	delete_option('pwa_restrict');	
 	delete_option('pwa_logout');
 	delete_option('pwa_allow_custom_users');
+	delete_option('pwa_logo_path');
+	delete_option('pwa_login_page_bg_color');
 }
 require dirname(__FILE__).'/pwa-class.php';
 

@@ -133,4 +133,26 @@ function pwa_get_current_page_url($s, $use_forwarded_host=false)
 {
     return pwa_current_path_protocol($s, $use_forwarded_host) . $s['REQUEST_URI'];
 }
+
+	
+//if(isset($getPwaOptions['pwa_logo_path'])):
+
+/* Change Wordpress Default Logo */
+function pwa_update_login_page_logo() {
+$getPwaOptions=get_pwa_setting_options();
+	
+    echo '<style type="text/css"> /* Protect WP-Admin Style*/';
+    
+    if(isset($getPwaOptions['pwa_logo_path']) && $getPwaOptions['pwa_logo_path']!='')
+      echo ' h1 a { background-image:url('.$getPwaOptions['pwa_logo_path'].') !important; }';
+      
+    if(isset($getPwaOptions['pwa_login_page_bg_color']) && $getPwaOptions['pwa_login_page_bg_color']!='')
+    echo ' body.login-action-login,html{ background:'.$getPwaOptions['pwa_login_page_bg_color'].' !important; height: 100% !important;}';
+    
+    echo '</style>';
+   
+}
+add_action('login_head', 'pwa_update_login_page_logo');
+
+
 ?>
