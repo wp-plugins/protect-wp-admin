@@ -1,4 +1,4 @@
-=== Protect WP-Admin ===
+=== Protect Your Admin ===
 Contributors:india-web-developer
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WN785E5V492L4
 Tags: Protect WP-Admin,wp-admin,Protect wordpress admin,Secure Admin,Admin,Scure Wordpress Admin,Rename Admin URL, Rename Wordpress Admin URL,Change wp-admin url,Change Admin URL,Change Admin Path,Restrict wp-admin
@@ -6,7 +6,7 @@ Requires at least: 3.0
 Tested up to: 4.1
 Stable tag: 1.3
 
-Protect Your Website Admin Against Hackers!. Change default Admin URL To Secure Admin URL (i.e http://yourdomain.com/myadmin)
+Protect Your Website Admin Against Hackers and modify login page style
 
 == Description ==
 
@@ -21,6 +21,8 @@ After you setup Protect WP-Admin, webmasters will be able to change the "sitenam
 All queries for the classic "/wp-admin/" and "wp-login.php" files will be redirected to the homepage, while access to the WP backend will be allowed only for the custom URL.
 
 The plugin also comes with some access filters, allowing webmasters to restrict guest and registered users access to wp-admin, just in case you want some of your editors to log in the classic way.
+
+You can modify the login page style by change background color and also you can update logo image.
 
 = Features =
 
