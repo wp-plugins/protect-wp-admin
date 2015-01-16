@@ -65,14 +65,32 @@ function init_pwa_admin_rewrite_rules() {
     if(isset($getPwaOptions['pwa_active']) && ''!=$getPwaOptions['pwa_rewrite_text']){
 	$newurl=strip_tags($getPwaOptions['pwa_rewrite_text']);
     add_rewrite_rule( $newurl.'/?$', 'wp-login.php', 'top' );
+    add_rewrite_rule( $newurl.'/register/?$', 'wp-login.php?action=register', 'top' );
+    add_rewrite_rule( $newurl.'/lostpassword/?$', 'wp-login.php?action=lostpassword', 'top' );
     }
 }
+
+/** 
+ * Update Login, Register & Forgot password link as per new admin url
+ * */
+add_action('login_head','csbwfs_custom_script');
+function csbwfs_custom_script()
+{ 	
+$getPwaOptions=get_pwa_setting_options();
+if(isset($getPwaOptions['pwa_active']) && ''!=$getPwaOptions['pwa_rewrite_text']){
+echo '<script>jQuery(window).load(function(){jQuery("#nav a").each(function(){
+            var linkText=jQuery(this).text();
+            if(linkText=="Log in"){jQuery(this).attr("href","'.home_url($getPwaOptions["pwa_rewrite_text"]).'");}
+			else if(linkText=="Register"){jQuery(this).attr("href","'.home_url($getPwaOptions["pwa_rewrite_text"].'/register').'");}else if(linkText=="Lost your password?"){jQuery(this).attr("href","'.home_url($getPwaOptions["pwa_rewrite_text"].'/lostpassword').'");}else { //silent}	
+        });});</script>';
+}
+
+}
+
 
 function pwa_admin_url_redirect_conditions()
 {
 	$getPwaOptions=get_pwa_setting_options();
-	
-
 	$wordpresActualURL =home_url('/wp-login.php');
     $request_url = pwa_get_current_page_url($_SERVER);
     $newUrl = explode('?',$request_url);

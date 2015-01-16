@@ -151,6 +151,20 @@ function init_pwa_admin_scripts()
 wp_register_style( 'pwa_admin_style', plugins_url( 'css/pwa-admin-min.css',__FILE__ ) );
 wp_enqueue_style( 'pwa_admin_style' );
 
+/* check .htaccess file writeable or not*/
+$csbwfsHtaccessfilePath = getcwd()."/.htaccess";
+$csbwfsHtaccessfilePath = str_replace('/wp-admin/','/',$csbwfsHtaccessfilePath);
+
+if(file_exists($csbwfsHtaccessfilePath)){
+	if(is_writable($csbwfsHtaccessfilePath))
+	  { $htaccessWriteable="1";}
+	  else 
+	   { $htaccessWriteable="0";}
+}else
+{
+	$htaccessWriteable="0";
+	}
+
 echo $script='<script type="text/javascript">
 	/* Protect WP-Admin js for admin */
 	jQuery(document).ready(function(){
@@ -166,12 +180,18 @@ echo $script='<script type="text/javascript">
 		   
 	   jQuery("#pwa-settings-form-admin .button-primary").click(function(){
 			var seoUrlVal=jQuery("#check_permalink").val();
+			var htaccessWriteable ="'.$htaccessWriteable.'";
 			if(seoUrlVal==0)
 			{
 			alert("Please update permalinks before activate the plugin. Permalinks option should not be default");
 			document.location.href="'.admin_url('options-permalink.php').'";
 			return false;
-				}else
+				}
+				else if(htaccessWriteable=="0"){
+					alert("Error : .htaccess file is not exist OR may be htaccess file is not writeable, So please double check it before enable the plugin");
+					return false;
+					}
+				else
 				{
 					return true;
 					}
