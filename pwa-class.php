@@ -67,6 +67,7 @@ function init_pwa_admin_rewrite_rules() {
     add_rewrite_rule( $newurl.'/?$', 'wp-login.php', 'top' );
     add_rewrite_rule( $newurl.'/register/?$', 'wp-login.php?action=register', 'top' );
     add_rewrite_rule( $newurl.'/lostpassword/?$', 'wp-login.php?action=lostpassword', 'top' );
+    
     }
 }
 
@@ -78,10 +79,23 @@ function csbwfs_custom_script()
 { 	
 $getPwaOptions=get_pwa_setting_options();
 if(isset($getPwaOptions['pwa_active']) && ''!=$getPwaOptions['pwa_rewrite_text']){
-echo '<script>jQuery(window).load(function(){jQuery("#nav a").each(function(){
+echo '<script>jQuery(window).load(function(){var formId= jQuery("#login form").attr("id");
+if(formId=="loginform"){
+	jQuery("#"+formId).attr("action","'.home_url($getPwaOptions["pwa_rewrite_text"]).'");
+	}else if("lostpasswordform"==formId){
+			jQuery("#"+formId).attr("action","'.home_url($getPwaOptions["pwa_rewrite_text"].'/lostpassword').'");
+		}else if("registerform"==formId){
+			jQuery("#"+formId).attr("action","'.home_url($getPwaOptions["pwa_rewrite_text"].'/register').'");
+			}else
+			{
+				//silent
+				}
+jQuery("#nav a").each(function(){
             var linkText=jQuery(this).text();
             if(linkText=="Log in"){jQuery(this).attr("href","'.home_url($getPwaOptions["pwa_rewrite_text"]).'");}
-			else if(linkText=="Register"){jQuery(this).attr("href","'.home_url($getPwaOptions["pwa_rewrite_text"].'/register').'");}else if(linkText=="Lost your password?"){jQuery(this).attr("href","'.home_url($getPwaOptions["pwa_rewrite_text"].'/lostpassword').'");}else { //silent}	
+			else if(linkText=="Register"){jQuery(this).attr("href","'.home_url($getPwaOptions["pwa_rewrite_text"].'/register').'");}else if(linkText=="Lost your password?"){jQuery(this).attr("href","'.home_url($getPwaOptions["pwa_rewrite_text"].'/lostpassword').'");}else { 
+				//silent
+				}	
         });});</script>';
 }
 

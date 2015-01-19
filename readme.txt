@@ -1,12 +1,12 @@
-=== Protect Your Admin ===
+=== Protect WP-Admin ===
 Contributors:india-web-developer
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WN785E5V492L4
 Tags: Protect WP-Admin,wp-admin,Protect wordpress admin,Secure Admin,Admin,Scure Wordpress Admin,Rename Admin URL, Rename Wordpress Admin URL,Change wp-admin url,Change Admin URL,Change Admin Path,Restrict wp-admin
 Requires at least: 3.0
 Tested up to: 4.1
-Stable tag: 1.3
+Stable tag: 1.4
 
-Protect Your Website Admin Against Hackers and modify login page style
+Protect Your Website Admin Against Hackers!. Change default Admin URL To Secure Admin URL (i.e http://yourdomain.com/myadmin)
 
 == Description ==
 
@@ -22,14 +22,19 @@ All queries for the classic "/wp-admin/" and "wp-login.php" files will be redire
 
 The plugin also comes with some access filters, allowing webmasters to restrict guest and registered users access to wp-admin, just in case you want some of your editors to log in the classic way.
 
-You can modify the login page style by change background color and also you can update logo image.
+**NOTE :Back up your database before beginning the activate plugin.**
+It is extremely important to back up your database before beginning the activate plugin. If, for some reason, you find it necessary to restore your database from these backups.
 
 = Features =
 
- * Rename/Change wp-admin url to new url (i.e http://yourdomain.com/myadmin)
+ * Define custom wp-admin url(i.e http://yourdomain.com/myadmin)
+ * Define custom Logo OR change default logo on login page
+ * Define body background color on login page 
+ * SEO friendly URL for "Register" page (i.e http://yourdomain.com/myadmin/register)
+ * SEO friendly URL for "Lost Password" page (i.e http://yourdomain.com/myadmin/lostpassword)
  * Restrict guest users for access to wp-admin
  * Restrict registered non-admin users from wp-admin
- * Change Logo and body background color on wp-login page
+ * Allow admin access to non-admin users by define comma seprate multiple ids
 
 
 == Installation ==
@@ -75,7 +80,14 @@ Don not forgot to update the "newadmin" slug with your new admin slug (that you 
 
 5. screenshot-5.png
 
+
 == Changelog == 
+
+= 1.4 = 
+ * Fixed links issue on "Register", "Login" & "Lost Password" As Per New Admin Url
+ * Fixed the "Register", "Login" & "Lost Password" Form Action URL As Per New Admin Url
+ * Add validation to check SEO firendly url enable or not.
+ * Add validation to check .htaccess file is writable or not.
 
 = 1.3 = 
  * Added an option for define to admin login page logo
