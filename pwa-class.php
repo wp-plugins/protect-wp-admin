@@ -105,13 +105,14 @@ jQuery("#nav a").each(function(){
 function pwa_admin_url_redirect_conditions()
 {
 	$getPwaOptions=get_pwa_setting_options();
-	$wordpresActualURL =home_url('/wp-login.php');
+	$pwaActualURLAry =array(home_url('/wp-login.php'),home_url('/wp-login'));
     $request_url = pwa_get_current_page_url($_SERVER);
     $newUrl = explode('?',$request_url);
-	if(! is_user_logged_in() && $wordpresActualURL==$newUrl[0] ) 
+	//print_r($pwaActualURLAry); echo $newUrl[0];exit;
+	if(! is_user_logged_in() && in_array($newUrl[0],$pwaActualURLAry) ) 
 	{
 		wp_redirect(home_url('/'));
-		
+		exit;
 		}else if(isset($getPwaOptions['pwa_restrict']) && $getPwaOptions['pwa_restrict']==1 && is_user_logged_in())
 		{
 			global $current_user;
