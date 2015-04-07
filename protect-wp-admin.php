@@ -5,7 +5,7 @@ Plugin URI: http://www.mrwebsolution.in/
 Description: "protect-wp-admin" is a very help full plugin to make wordpress admin more secure. Protect WP-Admin plugin is provide the options for change the wp-admin url and make the login page private(directly user can't access the login page).
 Author: Raghunath
 Author URI: http://www.mrwebsolution.in/
-Version: 1.4
+Version: 1.5
 */
 
 /***  Copyright 2014  Raghunath  (email : raghunath.0087@gmail.com)
@@ -123,7 +123,7 @@ function init_pwa_admin_option_page(){
 	<p><strong>My Other Plugins:</strong><br>
 	<ul>
 		<li><a href="https://wordpress.org/plugins/custom-share-buttons-with-floating-sidebar" target="_blank">Custom Share Buttons with Floating Sidebar</a></li>
-		<li><a href="https://wordpress.org/plugins/simple-testimonial-rutator/" target="_blank">Simple Testimonial Rutator</a></li>
+		<li><a href="https://wordpress.org/plugins/wp-testimonial" target="_blank">Simple Testimonial Rutator</a></li>
 		<li><a href="https://wordpress.org/plugins/wp-easy-recipe/" target="_blank">WP Easy Recipe</a></li>
 		<li><a href="https://wordpress.org/plugins/wp-social-buttons/" target="_blank">WP Social Buttons</a></li>
 		<li><a href="https://wordpress.org/plugins/wp-youtube-gallery/" target="_blank">WP Youtube Gallery</a></li>
@@ -145,7 +145,11 @@ function init_pwa_admin_option_page(){
 }
 
 /** add js into admin footer */
-add_action('admin_footer','init_pwa_admin_scripts');
+// better use get_current_screen(); or the global $current_screen
+if (isset($_GET['page']) && $_GET['page'] == 'pwa-settings') {
+   add_action('admin_footer','init_pwa_admin_scripts');
+}
+
 function init_pwa_admin_scripts()
 {
 wp_register_style( 'pwa_admin_style', plugins_url( 'css/pwa-admin-min.css',__FILE__ ) );

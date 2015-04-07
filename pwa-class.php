@@ -49,7 +49,8 @@ function pwa_logout_user_after_settings_save()
    {
      $URL=str_replace('&amp;','&',wp_logout_url());
       if(isset($getPwaOptions['pwa_rewrite_text']) && isset($getPwaOptions['pwa_logout']) && $getPwaOptions['pwa_logout']==1 && $getPwaOptions['pwa_rewrite_text']!=''){
-      wp_redirect(home_url('/'.$getPwaOptions['pwa_rewrite_text']));
+      wp_redirect(home_url('/'.$getPwaOptions['pwa_rewrite_text']),301);
+      exit;
      }else
      {
 		 //silent
@@ -148,7 +149,8 @@ function pwa_admin_url_redirect_conditions()
 				//silent is gold
 				}else
 				{
-					wp_redirect(home_url('/'));
+					wp_redirect(home_url('/'),301);
+					exit;
 					}
 			}else
 			{

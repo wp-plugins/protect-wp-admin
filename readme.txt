@@ -2,9 +2,9 @@
 Contributors:india-web-developer
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WN785E5V492L4
 Tags: Protect WP-Admin,wp-admin,Protect wordpress admin,Secure Admin,Admin,Scure Wordpress Admin,Rename Admin URL, Rename Wordpress Admin URL,Change wp-admin url,Change Admin URL,Change Admin Path,Restrict wp-admin
-Requires at least: 3.0
-Tested up to: 4.1
-Stable tag: 1.4
+Requires at least: 3.3
+Tested up to: 4.1.1
+Stable tag: 1.5
 
 Protect Your Website Admin Against Hackers and Modify Login Page Style
 
@@ -82,6 +82,10 @@ Don not forgot to update the "newadmin" slug with your new admin slug (that you 
 
 
 == Changelog == 
+
+= 1.5 = 
+ * Fixed wp-login url issue
+ * Fixed wp-admin url issue
 
 = 1.4 = 
  * Fixed links issue on "Register", "Login" & "Lost Password" As Per New Admin Url
