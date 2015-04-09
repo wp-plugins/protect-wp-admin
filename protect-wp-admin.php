@@ -260,4 +260,27 @@ function init_uninstall_pwa_plugins(){
 }
 require dirname(__FILE__).'/pwa-class.php';
 
+/** register_deactivation_hook */
+/** Delete exits options during deactivation the plugins */
+if( function_exists('register_deactivation_hook') ){
+   register_deactivation_hook(__FILE__,'init_deactivation_pwa_plugins');   
+}
+
+//Delete all options after uninstall the plugin
+function init_deactivation_pwa_plugins(){
+	delete_option('pwa_active');
+	delete_option('pwa_rewrite_text');
+	flush_rewrite_rules();
+}
+
+/** register_activation_hook */
+/** Delete exits options during disable the plugins */
+if( function_exists('register_activation_hook') ){
+   register_activation_hook(__FILE__,'init_activation_pwa_plugins');   
+}
+
+//Delete all options after uninstall the plugin
+function init_activation_pwa_plugins(){
+   	flush_rewrite_rules();
+}
 ?>
