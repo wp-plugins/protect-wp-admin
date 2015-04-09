@@ -49,8 +49,7 @@ function pwa_logout_user_after_settings_save()
    {
      $URL=str_replace('&amp;','&',wp_logout_url());
       if(isset($getPwaOptions['pwa_rewrite_text']) && isset($getPwaOptions['pwa_logout']) && $getPwaOptions['pwa_logout']==1 && $getPwaOptions['pwa_rewrite_text']!=''){
-      wp_redirect(home_url('/'.$getPwaOptions['pwa_rewrite_text']),301);
-      exit;
+      wp_redirect(home_url('/'.$getPwaOptions['pwa_rewrite_text']));
      }else
      {
 		 //silent
@@ -111,8 +110,6 @@ function pwa_admin_url_redirect_conditions()
                            home_url('/wp-login.php/'),
                            home_url('/wp-login'),
                            home_url('/wp-login/'),
-                           home_url('/wp-admin/'),
-                           home_url('/wp-admin')
                            );
     $request_url = pwa_get_current_page_url($_SERVER);
     $newUrl = explode('?',$request_url);
@@ -121,7 +118,13 @@ function pwa_admin_url_redirect_conditions()
 	{
 		wp_redirect(home_url('/'),301);
 		exit;
-		}else if(isset($getPwaOptions['pwa_restrict']) && $getPwaOptions['pwa_restrict']==1 && is_user_logged_in())
+		}
+	//elseif(is_user_logged_in() && in_array($newUrl[0],$pwaActualURLAry) ) 
+	//{
+		//wp_redirect(home_url('/wp-admin'),301);
+		//exit;
+		//}
+		else if(isset($getPwaOptions['pwa_restrict']) && $getPwaOptions['pwa_restrict']==1 && is_user_logged_in())
 		{
 			global $current_user;
 	        $user_roles = $current_user->roles;
@@ -149,8 +152,7 @@ function pwa_admin_url_redirect_conditions()
 				//silent is gold
 				}else
 				{
-					wp_redirect(home_url('/'),301);
-					exit;
+					wp_redirect(home_url('/'));
 					}
 			}else
 			{
