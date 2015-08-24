@@ -84,7 +84,7 @@ function init_pwa_admin_option_page(){
   <!-- Start Options Form -->
 	<form action="options.php" method="post" id="pwa-settings-form-admin">
 	<input type="hidden"  id="check_permalink" value="<?php echo count($tt);?>">	
-	<div id="pwa-tab-menu"><a id="pwa-general" class="pwa-tab-links active" >General</a> <a  id="pwa-admin-style" class="pwa-tab-links">Admin Style</a> <a  id="pwa-advance" class="pwa-tab-links">Advance Settings</a> <a  id="pwa-support" class="pwa-tab-links">Support</a> </div>
+	<div id="pwa-tab-menu"><a id="pwa-general" class="pwa-tab-links active" >General</a> <a  id="pwa-admin-style" class="pwa-tab-links">LoginPage Style</a> <a  id="pwa-advance" class="pwa-tab-links">Advance Settings</a> <a  id="pwa-support" class="pwa-tab-links">Support</a> </div>
 
 	<div class="pwa-setting">
 		<!-- General Setting -->	
@@ -96,7 +96,7 @@ function init_pwa_admin_option_page(){
 	
 	<!-- Admin Style -->
 	<div class="last author pwa-tab" id="div-pwa-admin-style">
-	<h2>Admin Style Settings</h2>
+	<h2>Admin Login Page Style Settings</h2>
 	<p id="adminurl"><label>Define Logo Path: </label><input type="text" id="pwa_logo_path" name="pwa_logo_path" value="<?php echo esc_attr(get_option('pwa_logo_path')); ?>"  placeholder="Add Custom Logo Image Path" size="30">(<i>Change WordPress Default Login Logo </i>)</p>
 	<p id="adminurl"><label>Body Background Color: </label><input type="text" id="pwa_login_page_bg_color" name="pwa_login_page_bg_color" value="<?php echo esc_attr(get_option('pwa_login_page_bg_color')); ?>"  placeholder="#444444" size="30"></p>
 	</div>
@@ -123,7 +123,7 @@ function init_pwa_admin_option_page(){
 	<p><strong>My Other Plugins:</strong><br>
 	<ul>
 		<li><a href="https://wordpress.org/plugins/custom-share-buttons-with-floating-sidebar" target="_blank">Custom Share Buttons with Floating Sidebar</a></li>
-		<li><a href="https://wordpress.org/plugins/wp-testimonial" target="_blank">Simple Testimonial Rutator</a></li>
+		<li><a href="https://wordpress.org/plugins/wp-testimonial" target="_blank">WP Testimonial</a></li>
 		<li><a href="https://wordpress.org/plugins/wp-easy-recipe/" target="_blank">WP Easy Recipe</a></li>
 		<li><a href="https://wordpress.org/plugins/wp-social-buttons/" target="_blank">WP Social Buttons</a></li>
 		<li><a href="https://wordpress.org/plugins/wp-youtube-gallery/" target="_blank">WP Youtube Gallery</a></li>
