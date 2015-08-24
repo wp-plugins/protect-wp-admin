@@ -78,7 +78,9 @@ function csbwfs_custom_script()
 { 	
 $getPwaOptions=get_pwa_setting_options();
 if(isset($getPwaOptions['pwa_active']) && ''!=$getPwaOptions['pwa_rewrite_text']){
-echo '<script>jQuery(window).load(function(){var formId= jQuery("#login form").attr("id");
+echo '<script>jQuery(window).load(function(){
+	jQuery("#login #login_error a").attr("href","'.home_url($getPwaOptions["pwa_rewrite_text"].'/lostpassword').'");
+	var formId= jQuery("#login form").attr("id");
 if(formId=="loginform"){
 	jQuery("#"+formId).attr("action","'.home_url($getPwaOptions["pwa_rewrite_text"]).'");
 	}else if("lostpasswordform"==formId){
