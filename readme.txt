@@ -1,9 +1,9 @@
 === Protect Your Admin ===
 Contributors:india-web-developer
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WN785E5V492L4
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZEMSYQUZRUK6A
 Tags: Protect WP-Admin,wp-admin,Protect wordpress admin,Secure Admin,Admin,Scure Wordpress Admin,Rename Admin URL, Rename Wordpress Admin URL,Change wp-admin url,Change Admin URL,Change Admin Path,Restrict wp-admin
 Requires at least: 3.3
-Tested up to: 4.2.4
+Tested up to: 4.3
 Stable tag: 1.6
 
 Protect Your Website Admin Against Hackers and Modify Login Page Style
