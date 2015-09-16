@@ -5,10 +5,10 @@ Plugin URI: http://www.mrwebsolution.in/
 Description: "protect-wp-admin" is a very help full plugin to make wordpress admin more secure. Protect WP-Admin plugin is provide the options for change the wp-admin url and make the login page private(directly user can't access the login page).
 Author: Raghunath
 Author URI: http://www.mrwebsolution.in/
-Version: 1.6
+Version: 1.7
 */
 
-/***  Copyright 2014  Raghunath  (email : raghunath.0087@gmail.com)
+/*** Protect WP-Admin Copyright 2014  Raghunath  (email : raghunath.0087@gmail.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as 
@@ -23,24 +23,24 @@ Version: 1.6
     along with this program; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ***/
-
-
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
  * Initialize "Protect WP-Admin" plugin admin menu 
  * @create new menu
  * @create plugin settings page
  */
 add_action('admin_menu','init_pwa_admin_menu');
-
+if(!function_exists('init_pwa_admin_menu')):
 function init_pwa_admin_menu(){
 
 	add_options_page('Protect WP-Admin','Protect WP-Admin','manage_options','pwa-settings','init_pwa_admin_option_page');
 
 }
-
+endif;
 /** Define Action to register "Protect WP-Admin" Options */
 add_action('admin_init','init_pwa_options_fields');
 /** Register "Protect WP-Admin" options */
+if(!function_exists('init_pwa_options_fields')):
 function init_pwa_options_fields(){
 	register_setting('pwa_setting_options','pwa_active');
 	register_setting('pwa_setting_options','pwa_rewrite_text');	
@@ -50,16 +50,17 @@ function init_pwa_options_fields(){
 	register_setting('pwa_setting_options','pwa_logo_path');
 	register_setting('pwa_setting_options','pwa_login_page_bg_color');
 } 
-
-
+endif;
 /** Add settings link to plugin list page in admin */
 add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'pwa_action_links' );
+if(!function_exists('pwa_action_links')):
 function pwa_action_links( $links ) {
    $links[] = '<a href="'. get_admin_url(null, 'options-general.php?page=pwa-settings') .'">Settings</a>';
    return $links;
 }
-
+endif;
 /** Check Permalink enable or not*/
+if(!function_exists('get_pwa_setting_optionsa')):
 function get_pwa_setting_optionsa() {
 		global $wpdb;
 		$pwaOptions1 = $wpdb->get_results("SELECT option_name, option_value FROM $wpdb->options WHERE option_name = 'rewrite_rules'");
@@ -70,12 +71,11 @@ function get_pwa_setting_optionsa() {
 	return $pwaOptions1;
 			
 	}
-
-
+endif;
 
 /** Options Form HTML for "Protect WP-Admin" plugin */
+if(!function_exists('init_pwa_admin_option_page')):
 function init_pwa_admin_option_page(){ 
-	
 		$tt=get_pwa_setting_optionsa();
 	?>
 	<div style="width: 80%; padding: 10px; margin: 10px;"> 
@@ -115,19 +115,26 @@ function init_pwa_admin_option_page(){
 	<!-- Support -->
 	<div class="last author pwa-tab" id="div-pwa-support">
 	<h2>Plugin Support</h2>
-	
-	<p><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WN785E5V492L4" target="_blank" style="font-size: 17px; font-weight: bold;"><img src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif" title="Donate for this plugin"></a></p>
+	<table>
+	<tr>
+	<td width="30%"><p><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZEMSYQUZRUK6A" target="_blank" style="font-size: 17px; font-weight: bold;"><img src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif" title="Donate for this plugin"></a></p>
 	
 	<p><strong>Plugin Author:</strong><br><img src="<?php echo  plugins_url( 'images/raghu.jpg' , __FILE__ );?>" width="75" height="75"><br><a href="http://raghunathgurjar.wordpress.com" target="_blank">Raghunath Gurjar</a></p>
 	<p><a href="mailto:raghunath.0087@gmail.com" target="_blank" class="contact-author">Contact Author</a></p>
-	<p><strong>My Other Plugins:</strong><br>
-	<ul>
+</td>
+	<td>		<p><strong>My Other Plugins:</strong><br>
+	<ol>
 		<li><a href="https://wordpress.org/plugins/custom-share-buttons-with-floating-sidebar" target="_blank">Custom Share Buttons with Floating Sidebar</a></li>
 		<li><a href="https://wordpress.org/plugins/wp-testimonial" target="_blank">WP Testimonial</a></li>
 		<li><a href="https://wordpress.org/plugins/wp-easy-recipe/" target="_blank">WP Easy Recipe</a></li>
 		<li><a href="https://wordpress.org/plugins/wp-social-buttons/" target="_blank">WP Social Buttons</a></li>
 		<li><a href="https://wordpress.org/plugins/wp-youtube-gallery/" target="_blank">WP Youtube Gallery</a></li>
-		</ul></p>
+		<li><a href="https://wordpress.org/plugins/cf7-advance-security/" target="_blank">CF7 Advance Security</a></li>
+		<li><a href="https://wordpress.org/plugins/wc-sales-count-manager/" target="_blank">WooCommerce Sales Count Manager</a></li>
+		</ol></p></td>
+	</tr>
+	</table>
+
 	</div>
 
 	</div>
@@ -143,13 +150,13 @@ function init_pwa_admin_option_page(){
 
 <?php
 }
-
+endif;
 /** add js into admin footer */
 // better use get_current_screen(); or the global $current_screen
 if (isset($_GET['page']) && $_GET['page'] == 'pwa-settings') {
    add_action('admin_footer','init_pwa_admin_scripts');
 }
-
+if(!function_exists('init_pwa_admin_scripts')):
 function init_pwa_admin_scripts()
 {
 wp_register_style( 'pwa_admin_style', plugins_url( 'css/pwa-admin-min.css',__FILE__ ) );
@@ -218,30 +225,33 @@ echo $script='<script type="text/javascript">
 		})
 	</script>';
 
-	}
-
-
+}
+endif;
 
 // Add Check if permalinks are set on plugin activation
 register_activation_hook( __FILE__, 'is_permalink_activate' );
+if(!function_exists('is_permalink_activate')):
 function is_permalink_activate() {
     //add notice if user needs to enable permalinks
     if (! get_option('permalink_structure') )
         add_action('admin_notices', 'permalink_structure_admin_notice');
 }
-
+endif;
+if(!function_exists('permalink_structure_admin_notice')):
 function permalink_structure_admin_notice(){
     echo '<div id="message" class="error"><p>Please Make sure to enable <a href="options-permalink.php">Permalinks</a>.</p></div>';
 }
-
+endif;
 /** register_install_hook */
 if( function_exists('register_install_hook') ){
 register_uninstall_hook(__FILE__,'init_install_pwa_plugins'); 
 }
 //flush the rewrite
+if(!function_exists('init_install_pwa_plugins')):
 function init_install_pwa_plugins(){
 	  flush_rewrite_rules();
-} 
+}
+endif; 
 /** register_uninstall_hook */
 /** Delete exits options during disable the plugins */
 if( function_exists('register_uninstall_hook') ){
@@ -249,6 +259,7 @@ if( function_exists('register_uninstall_hook') ){
 }
 
 //Delete all options after uninstall the plugin
+if(!function_exists('init_uninstall_pwa_plugins')):
 function init_uninstall_pwa_plugins(){
 	delete_option('pwa_active');
 	delete_option('pwa_rewrite_text');	
@@ -258,6 +269,7 @@ function init_uninstall_pwa_plugins(){
 	delete_option('pwa_logo_path');
 	delete_option('pwa_login_page_bg_color');
 }
+endif;
 require dirname(__FILE__).'/pwa-class.php';
 
 /** register_deactivation_hook */
@@ -267,20 +279,22 @@ if( function_exists('register_deactivation_hook') ){
 }
 
 //Delete all options after uninstall the plugin
+if(!function_exists('init_deactivation_pwa_plugins')):
 function init_deactivation_pwa_plugins(){
 	delete_option('pwa_active');
 	delete_option('pwa_rewrite_text');
 	flush_rewrite_rules();
 }
-
+endif;
 /** register_activation_hook */
 /** Delete exits options during disable the plugins */
 if( function_exists('register_activation_hook') ){
    register_activation_hook(__FILE__,'init_activation_pwa_plugins');   
 }
-
 //Delete all options after uninstall the plugin
+if(!function_exists('init_activation_pwa_plugins')):
 function init_activation_pwa_plugins(){
    	flush_rewrite_rules();
 }
+endif;
 ?>

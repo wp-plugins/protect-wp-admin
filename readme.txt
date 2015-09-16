@@ -3,8 +3,8 @@ Contributors:india-web-developer
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZEMSYQUZRUK6A
 Tags: Protect WP-Admin,wp-admin,Protect wordpress admin,Secure Admin,Admin,Scure Wordpress Admin,Rename Admin URL, Rename Wordpress Admin URL,Change wp-admin url,Change Admin URL,Change Admin Path,Restrict wp-admin
 Requires at least: 3.3
-Tested up to: 4.3
-Stable tag: 1.6
+Tested up to: 4.3.1
+Stable tag: 1.7
 
 Protect Your Website Admin Against Hackers and Modify Login Page Style
 
@@ -38,6 +38,9 @@ It is extremely important to back up your database before beginning the activate
 
 
 == Installation ==
+In most cases you can install automatically from WordPress.
+
+However, if you install this manually, follow these steps:
 
  * Step 1. Upload "protect-wp-admin" folder to the `/wp-content/plugins/` directory
  * Step 2. Activate the plugin through the Plugins menu in WordPress
@@ -52,7 +55,7 @@ It is extremely important to back up your database before beginning the activate
 * 2.Was not able to login after installation
 
 Basicaly issues can come only in case when you will use default permalink settings. 
-If your permalink will be update to any other option except default then it will be work fine. Anyway Dont' worry,add code give below into your site .htaccess file.
+If your permalink will be update to any other option except default then it will be work fine. Anyway Dont' worry, manualy you can add code into your site .htaccess file.
 	
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
@@ -82,6 +85,11 @@ Don not forgot to update the "newadmin" slug with your new admin slug (that you 
 
 
 == Changelog == 
+
+= 1.7 = 
+ * Fixed forget password email issue
+ * Fixed forgot password link issue on login error page
+
 = 1.6 = 
  *  Fixed wp-login.php issue for www url
  
