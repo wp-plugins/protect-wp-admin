@@ -22,10 +22,12 @@ endif;
 $getPwaOptions=get_pwa_setting_options();
 if(isset($getPwaOptions['pwa_active']) && '1'==$getPwaOptions['pwa_active'])
 {
+add_action('login_enqueue_scripts','csbwfs_load_jquery');
 add_action('init', 'init_pwa_admin_rewrite_rules' );
 add_action('init', 'pwa_admin_url_redirect_conditions' );
 add_action('login_head', 'pwa_update_login_page_logo');
-add_action('login_head','csbwfs_custom_script');
+add_action('login_footer','csbwfs_custom_script',5);
+
 	if(isset($getPwaOptions['pwa_logout']))
 	{
 	add_action('admin_init', 'pwa_logout_user_after_settings_save');
@@ -72,11 +74,19 @@ endif;
  * Update Login, Register & Forgot password link as per new admin url
  * */
 
+if(!function_exists('csbwfs_load_jquery')):
+function csbwfs_load_jquery()
+{
+wp_enqueue_script("jquery"); 
+}
+endif;
+
 if(!function_exists('csbwfs_custom_script')):
 function csbwfs_custom_script()
-{ 	
+{	
 $getPwaOptions=get_pwa_setting_options();
 if(isset($getPwaOptions['pwa_active']) && ''!=$getPwaOptions['pwa_rewrite_text']){
+
 echo '<script>jQuery(window).load(function(){
 	jQuery("#login #login_error a").attr("href","'.home_url($getPwaOptions["pwa_rewrite_text"].'/lostpassword').'");
 	jQuery("body.login-action-resetpass p.reset-pass a").attr("href","'.home_url($getPwaOptions["pwa_rewrite_text"].'/').'");
@@ -131,7 +141,7 @@ $username = $_GET['login'];
 if(username_exists($username))
 {
 //silent
-}else{ wp_redirect(home_url('/'),301);exit;
+}else{ wp_redirect(home_url('/'),301); //exit;
 }
 }elseif(isset($_GET['action']) && $_GET['action']=='rp')
 {
@@ -140,7 +150,7 @@ if(username_exists($username))
 elseif(isset($_GET['action']) && isset($_GET['error']) && $_GET['action']=='lostpassword' && $_GET['error']=='invalidkey')
 {
 	$redirectUrl=home_url($getPwaOptions["pwa_rewrite_text"].'/?action=lostpassword&error=invalidkey');
-	wp_redirect($redirectUrl,301);exit;
+	wp_redirect($redirectUrl,301);//exit;
 	}
 elseif(isset($_GET['action']) && $_GET['action']=='resetpass')
 {
@@ -148,7 +158,7 @@ elseif(isset($_GET['action']) && $_GET['action']=='resetpass')
 	}
 	else{
 
-	wp_redirect(home_url('/'),301);exit;
+	wp_redirect(home_url('/'),301);//exit;
 	   }
 
 
@@ -182,7 +192,7 @@ elseif(isset($_GET['action']) && $_GET['action']=='resetpass')
 				//silent is gold
 				}else
 				{
-					wp_redirect(home_url('/'));exit;
+					wp_redirect(home_url('/'));//exit;
 					}
 			}else
 			{
