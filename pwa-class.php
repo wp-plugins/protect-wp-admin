@@ -54,7 +54,6 @@ function pwa_logout_user_after_settings_save()
 		 }
      //wp_redirect($URL);
    }
-   
 }
 endif;
 /** Create a new rewrite rule for change to wp-admin url */
@@ -73,7 +72,6 @@ endif;
 /** 
  * Update Login, Register & Forgot password link as per new admin url
  * */
-
 if(!function_exists('csbwfs_load_jquery')):
 function csbwfs_load_jquery()
 {
