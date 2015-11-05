@@ -5,7 +5,7 @@ Plugin URI: http://www.mrwebsolution.in/
 Description: "protect-wp-admin" is a very help full plugin to make wordpress admin more secure. Protect WP-Admin plugin is provide the options for change the wp-admin url and make the login page private(directly user can't access the login page).
 Author: Raghunath
 Author URI: http://www.mrwebsolution.in/
-Version: 1.7
+Version: 1.8
 */
 
 /*** Protect WP-Admin Copyright 2014  Raghunath  (email : raghunath.0087@gmail.com)
@@ -282,7 +282,7 @@ if( function_exists('register_deactivation_hook') ){
 if(!function_exists('init_deactivation_pwa_plugins')):
 function init_deactivation_pwa_plugins(){
 	delete_option('pwa_active');
-	delete_option('pwa_rewrite_text');
+	delete_option('pwa_logout');
 	flush_rewrite_rules();
 }
 endif;
@@ -294,6 +294,7 @@ if( function_exists('register_activation_hook') ){
 //Delete all options after uninstall the plugin
 if(!function_exists('init_activation_pwa_plugins')):
 function init_activation_pwa_plugins(){
+	delete_option('pwa_logout');
    	flush_rewrite_rules();
 }
 endif;

@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Protect WP-Admin,wp-admin,Protect wordpress admin,Secure Admin,Admin,Scure Wordpress Admin,Rename Admin URL, Rename Wordpress Admin URL,Change wp-admin url,Change Admin URL,Change Admin Path,Restrict wp-admin
 Requires at least: 3.3
 Tested up to: 4.3.1
-Stable tag: 1.7
+Stable tag: 1.8
 
 Protect Your Website Admin Against Hackers and Modify Login Page Style
 
@@ -25,6 +25,9 @@ The plugin also comes with some access filters, allowing webmasters to restrict 
 **NOTE :Back up your database before beginning the activate plugin.**
 It is extremely important to back up your database before beginning the activate plugin. If, for some reason, you find it necessary to restore your database from these backups.
 
+ **[ Upgrade to Pro Version - Server1 ](http://extensions.mrwebsolution.in/pwa-pro)**
+
+
 = Features =
 
  * Define custom wp-admin url(i.e http://yourdomain.com/myadmin)
@@ -36,15 +39,24 @@ It is extremely important to back up your database before beginning the activate
  * Restrict registered non-admin users from wp-admin
  * Allow admin access to non-admin users by define comma seprate multiple ids
 
+= Go Pro =
+
+We have also released an add-on for Protect-WP-Admin which not only demonstrates the flexibility of Protect-WP-Admin, but also adds some important features:
+ * Login Attempt Counter
+ * Option for manage login page CSS from admin
+ * Faster support
+
+ **[ Go Pro](http://extensions.mrwebsolution.in/pwa-pro)**
+
 
 == Installation ==
 In most cases you can install automatically from WordPress.
 
 However, if you install this manually, follow these steps:
 
- * Step 1. Upload "protect-wp-admin" folder to the `/wp-content/plugins/` directory
+ * Step 1. Upload "protect-wp-admin-pro" folder to the `/wp-content/plugins/` directory
  * Step 2. Activate the plugin through the Plugins menu in WordPress
- * Step 3. Go to Settings "Protect WP-Admin" and configure the plugin settings.
+ * Step 3. Go to Settings "Protect WP-Admin Pro" and configure the plugin settings.
 
 == Frequently Asked Questions ==
 
@@ -52,10 +64,11 @@ However, if you install this manually, follow these steps:
 
    Don't worry, Just update the site permalink ("Settings" >> "Permalinks") and re-check,Now this time it will be work fine
 
-* 2.Was not able to login after installation
+* 2.Am i not able to login after installation
 
 Basicaly issues can come only in case when you will use default permalink settings. 
 If your permalink will be update to any other option except default then it will be work fine. Anyway Dont' worry, manualy you can add code into your site .htaccess file.
+
 	
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
@@ -84,7 +97,12 @@ Don not forgot to update the "newadmin" slug with your new admin slug (that you 
 5. screenshot-5.png
 
 
+
 == Changelog == 
+
+= 1.8 = 
+ * Fixed Login Failure issue
+ * Released Pro Addon
 
 = 1.7 = 
  * Fixed forget password email issue
