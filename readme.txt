@@ -43,7 +43,9 @@ It is extremely important to back up your database before beginning the activate
 
 We have also released an add-on for Protect-WP-Admin which not only demonstrates the flexibility of Protect-WP-Admin, but also adds some important features:
  * Login Attempt Counter
- * Option for manage login page CSS from admin
+ * An option for manage login page CSS from admin
+ * An option to change username of any user
+ * An option for define custom redirect url for defalut wp-admin url
  * Faster support
 
  **[ Go Pro](http://extensions.mrwebsolution.in/pwa-pro)**
