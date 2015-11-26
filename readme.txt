@@ -25,7 +25,8 @@ The plugin also comes with some access filters, allowing webmasters to restrict 
 **NOTE :Back up your database before beginning the activate plugin.**
 It is extremely important to back up your database before beginning the activate plugin. If, for some reason, you find it necessary to restore your database from these backups.
 
- **[ Upgrade to Pro Version - Server1 ](http://extensions.mrwebsolution.in/pwa-pro)**
+ **[ Upgrade to Pro Version - Server 1 ](http://extensions.mrwebsolution.in/pwa-pro)**
+ **[ Upgrade to Pro Version - Server 2 ](https://raghunathgurjar.wordpress.com/wordpress/pwa-pro/)**
 
 
 = Features =
@@ -48,7 +49,8 @@ We have also released an add-on for Protect-WP-Admin which not only demonstrates
  * An option for define custom redirect url for defalut wp-admin url
  * Faster support
 
- **[ Go Pro](http://extensions.mrwebsolution.in/pwa-pro)**
+ **[ Upgrade to Pro Version - Server 1 ](http://extensions.mrwebsolution.in/pwa-pro)**
+ **[ Upgrade to Pro Version - Server 2 ](https://raghunathgurjar.wordpress.com/wordpress/pwa-pro/)**
 
 
 == Installation ==
